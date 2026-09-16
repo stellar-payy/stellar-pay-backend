@@ -1,0 +1,17 @@
+[package]
+name = "stellar-pay-payments"
+edition.workspace = true
+license.workspace = true
+version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+async-trait.workspace = true
+chrono.workspace = true
+rust_decimal.workspace = true
+sqlx.workspace = true
+stellar-pay-core.workspace = true
+tokio.workspace = true
+uuid.workspace = true

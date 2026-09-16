@@ -1,0 +1,20 @@
+[package]
+name = "stellar-pay-reconciliation"
+edition.workspace = true
+license.workspace = true
+version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+anyhow.workspace = true
+chrono.workspace = true
+rust_decimal.workspace = true
+stellar-pay-core.workspace = true
+stellar-pay-onchain.workspace = true
+stellar-pay-payments.workspace = true
+stellar-pay-stellar.workspace = true
+stellar-pay-webhooks.workspace = true
+tokio.workspace = true
+tracing.workspace = true

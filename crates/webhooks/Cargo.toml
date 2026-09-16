@@ -1,0 +1,23 @@
+[package]
+name = "stellar-pay-webhooks"
+edition.workspace = true
+license.workspace = true
+version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+async-trait.workspace = true
+chrono.workspace = true
+hex.workspace = true
+hmac.workspace = true
+reqwest.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+sqlx.workspace = true
+stellar-pay-core.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+uuid.workspace = true

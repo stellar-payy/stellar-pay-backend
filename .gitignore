@@ -1,0 +1,6 @@
+/target
+.env
+*.pdb
+Cargo.lock.bak
+.DS_Store
+.claude/

@@ -1,0 +1,86 @@
+[workspace]
+resolver = "2"
+
+members = [
+    "crates/api",
+    "crates/core",
+    "crates/stellar",
+    "crates/payments",
+    "crates/webhooks",
+    "crates/reconciliation",
+    "crates/onchain",
+    "crates/cli",
+]
+
+# The workspace root is also a package so that root-level `tests/*.rs` have
+# a target to attach to. It carries no runtime code of its own.
+[package]
+name = "stellar-pay"
+publish = false
+version.workspace = true
+edition.workspace = true
+
+[lints]
+workspace = true
+
+[workspace.package]
+edition = "2024"
+license = "MIT"
+version = "0.1.0"
+
+# The codebase convention requires an explicit `return` on every function's
+# return value, which clippy's `needless_return` lint otherwise flags.
+[workspace.lints.clippy]
+needless_return = "allow"
+
+[workspace.dependencies]
+anyhow = "1"
+async-trait = "0.1"
+axum = "0.8"
+clap = { version = "4", features = ["derive"] }
+dotenvy = "0.15"
+reqwest = { version = "0.12", features = ["json"] }
+rust_decimal = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sqlx = { version = "0.8", features = [
+    "runtime-tokio",
+    "postgres",
+    "uuid",
+    "chrono",
+    "rust_decimal",
+    "migrate",
+    "json",
+] }
+thiserror = "2"
+tokio = { version = "1", features = ["full"] }
+tracing = "0.1"
+tracing-subscriber = "0.3"
+uuid = { version = "1", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+hmac = "0.12"
+sha2 = "0.10"
+hex = "0.4"
+
+# === Internal crates
+stellar-pay-core = { path = "crates/core" }
+stellar-pay-stellar = { path = "crates/stellar" }
+stellar-pay-payments = { path = "crates/payments" }
+stellar-pay-webhooks = { path = "crates/webhooks" }
+stellar-pay-reconciliation = { path = "crates/reconciliation" }
+stellar-pay-onchain = { path = "crates/onchain" }
+stellar-pay-api = { path = "crates/api" }
+
+# === Root-level integration test dependencies
+[dev-dependencies]
+chrono.workspace = true
+serde_json.workspace = true
+sqlx.workspace = true
+stellar-pay-core.workspace = true
+stellar-pay-onchain.workspace = true
+stellar-pay-payments.workspace = true
+stellar-pay-reconciliation.workspace = true
+stellar-pay-stellar = { workspace = true, features = ["testing"] }
+stellar-pay-webhooks.workspace = true
+tokio.workspace = true
+uuid.workspace = true
